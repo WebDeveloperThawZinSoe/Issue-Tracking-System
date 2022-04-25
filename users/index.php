@@ -1,57 +1,11 @@
-<?php
-session_start();
+<?php session_start();
 error_reporting(0);
-include("includes/config.php");
-if(isset($_POST['submit']))
-{
-$ret=mysqli_query($bd, "SELECT * FROM users WHERE userEmail='".$_POST['username']."' and password='".md5($_POST['password'])."'");
-$num=mysqli_fetch_array($ret);
-if($num>0)
-{
-$extra="change-password.php";//
-$_SESSION['login']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-$host=$_SERVER['HTTP_HOST'];
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=1;
-$log=mysqli_query($bd, "insert into userlog(uid,username,userip,status) values('".$_SESSION['id']."','".$_SESSION['login']."','$uip','$status')");
-$uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-exit();
+include('includes/config.php');
+if(strlen($_SESSION['login'])==0)
+  { 
+header('location:index.php');
 }
-else
-{
-$_SESSION['login']=$_POST['username'];	
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=0;
-mysqli_query($bd, "insert into userlog(username,userip,status) values('".$_SESSION['login']."','$uip','$status')");
-$errormsg="Invalid username or password";
-$extra="login.php";
-
-}
-}
-
-
-
-if(isset($_POST['change']))
-{
-   $email=$_POST['email'];
-    $contact=$_POST['contact'];
-    $password=md5($_POST['password']);
-$query=mysqli_query($bd, "SELECT * FROM users WHERE userEmail='$email' and contactNo='$contact'");
-$num=mysqli_fetch_array($query);
-if($num>0)
-{
-mysqli_query($bd, "update users set password='$password' WHERE userEmail='$email' and contactNo='$contact' ");
-$msg="Password Changed Successfully";
-
-}
-else
-{
-$errormsg="Invalid email id or Contact no";
-}
-}
-?>
+else{ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,116 +16,125 @@ $errormsg="Invalid email id or Contact no";
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>CMS | User Login</title>
+    <title>CMS | Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-<script type="text/javascript">
-function valid()
-{
- if(document.forgot.password.value!= document.forgot.confirmpassword.value)
-{
-alert("Password and Confirm Password Field do not match  !!");
-document.forgot.confirmpassword.focus();
-return false;
-}
-return true;
-}
-</script>
+
+    <script src="assets/js/chart-master/Chart.js"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
+  <section id="container" >
+<?php include("includes/header.php");?>
+<?php include("includes/sidebar.php");?>
+      <section id="main-content">
+          <section class="wrapper">
 
-	  <div id="login-page">
-	  	<div class="container">
-	  	
-		      <form class="form-login" name="login" method="post">
-		        <h2 class="form-login-heading">sign in now</h2>
-		        <p style="padding-left:4%; padding-top:2%;  color:red">
-		        	<?php if($errormsg){
-echo htmlentities($errormsg);
-		        		}?></p>
+              <div class="row">
+                  <div class="col-lg-9 main-chart">
+                  
+                  
+                  	<div class="col-md-2 col-sm-2 box0">
+                        <div>
+                 
+                  </div></div>
 
-		        		<p style="padding-left:4%; padding-top:2%;  color:green">
-		        	<?php if($msg){
-echo htmlentities($msg);
-		        		}?></p>
-		        <div class="login-wrap">
-		            <input type="text" class="form-control" name="username" placeholder="Email"  required autofocus>
-		            <br>
-		            <input type="password" class="form-control" name="password" required placeholder="Password">
-		            <label class="checkbox">
-		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-		
-		                </span>
-		            </label>
-		            <button class="btn btn-theme btn-block" name="submit" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-		            <hr>
-		           </form>
-		            <div class="registration">
-		                Don't have an account yet?<br/>
-		                <a class="" href="registration.php">
-		                    Create an account
-		                </a>
-		            </div>
-		
-		        </div>
-		
-		          <!-- Modal -->
-		           <form class="form-login" name="forgot" method="post">
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-		              <div class="modal-dialog">
-		                  <div class="modal-content">
-		                      <div class="modal-header">
-		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Forgot Password ?</h4>
-		                      </div>
-		                      <div class="modal-body">
-		                          <p>Enter your details below to reset your password.</p>
-<input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control" required><br >
-<input type="text" name="contact" placeholder="contact No" autocomplete="off" class="form-control" required><br>
- <input type="password" class="form-control" placeholder="New Password" id="password" name="password"  required ><br />
-<input type="password" class="form-control unicase-form-control text-input" placeholder="Confirm Password" id="confirmpassword" name="confirmpassword" required >
 
-		
-		                      </div>
-		                      <div class="modal-footer">
-		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="submit" name="change" onclick="return valid();">Submit</button>
-		                      </div>
-		                  </div>
-		              </div>
-		          </div>
-		          <!-- modal -->
-		          </form>
-		
-		      	  	
-	  	
-	  	</div>
-	  </div>
+
+                  	
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_news"></span>
+                                <?php 
+                   
+$rt = mysqli_query($bd, "SELECT * FROM tblcomplaints where userId='".$_SESSION['id']."' and status is null");
+$num1 = mysqli_num_rows($rt);
+{?>
+					  			<h3><?php echo htmlentities($num1);?></h3>
+                  			</div>
+					  			<p><?php echo htmlentities($num1);?> Complaints not Process yet</p>
+                  		</div>
+                      <?php }?>
+
+
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_news"></span>
+                    <?php 
+  $status="in Process";                   
+$rt = mysqli_query($bd, "SELECT * FROM tblcomplaints where userId='".$_SESSION['id']."' and  status='$status'");
+$num1 = mysqli_num_rows($rt);
+{?>
+                  <h3><?php echo htmlentities($num1);?></h3>
+                        </div>
+                  <p><?php echo htmlentities($num1);?> Complaints Status in process</p>
+                      </div>
+  <?php }?>
+
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_news"></span>
+                       <?php 
+  $status="closed";                   
+$rt = mysqli_query($bd, "SELECT * FROM tblcomplaints where userId='".$_SESSION['id']."' and  status='$status'");
+$num1 = mysqli_num_rows($rt);
+{?>
+                  <h3><?php echo htmlentities($num1);?></h3>
+                        </div>
+                  <p><?php echo htmlentities($num1);?> Complaint has been closed</p>
+                      </div>
+
+<?php }?>
+                  	
+                  	
+                  	</div><!-- /row mt -->	
+                  
+                      
+                     
+                    				
+				
+				
+          </section>
+      </section>
+<?php include("includes/footer.php");?>
+  </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-
-    <!--BACKSTRETCH-->
-    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
-    <script>
-        $.backstretch("assets/img/login-bg.jpg", {speed: 500});
-    </script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
 
 
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>	
   </body>
 </html>
+<?php } ?>

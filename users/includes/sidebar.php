@@ -3,7 +3,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="dashboard.php"><img src="assets/img/img-01.png" class="rounded mx-auto d-block" width="100"></a></p>
                    <?php $query=mysqli_query($bd, "select fullName from users where userEmail='".$_SESSION['login']."'");
  while($row=mysqli_fetch_array($query)) 
  {
@@ -41,6 +41,14 @@
                       <a href="complaint-history.php" >
                           <i class="fa fa-tasks"></i>
                           <span>Complaint History</span>
+                      </a>
+                      
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="logout.php" >
+                          <i class="fa fa-sign-out"></i>
+                          <span>Logout.php</span>
                       </a>
                       
                   </li>

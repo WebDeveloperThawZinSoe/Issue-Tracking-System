@@ -6,6 +6,61 @@ https://webdeveloperthawzinsoe.github.io/Thaw-Zin-Soe/
 https://github.com/WebDeveloperThawZinSoe
 
 -->
+<?php
+session_start();
+error_reporting(1);
+include("users/includes/config.php");
+if(isset($_POST['submit']))
+{
+$ret=mysqli_query($bd, "SELECT * FROM users WHERE userEmail='".$_POST['username']."' and password='".md5($_POST['password'])."'");
+$num=mysqli_fetch_array($ret);
+if($num>0)
+{
+$extra="users/dashboard.php";//
+$_SESSION['login']=$_POST['username'];
+$_SESSION['id']=$num['id'];
+$host=$_SERVER['HTTP_HOST'];
+$uip=$_SERVER['REMOTE_ADDR'];
+$status=1;
+$log=mysqli_query($bd, "insert into userlog(uid,username,userip,status) values('".$_SESSION['id']."','".$_SESSION['login']."','$uip','$status')");
+$uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+header("location:http://$host$uri/$extra");
+exit();
+}
+else
+{
+$_SESSION['login']=$_POST['username'];	
+$uip=$_SERVER['REMOTE_ADDR'];
+$status=0;
+mysqli_query($bd, "insert into userlog(username,userip,status) values('".$_SESSION['login']."','$uip','$status')");
+$errormsg="Invalid username or password";
+$extra="login.php";
+
+}
+}
+
+
+
+if(isset($_POST['change']))
+{
+   $email=$_POST['email'];
+    $contact=$_POST['contact'];
+    $password=md5($_POST['password']);
+$query=mysqli_query($bd, "SELECT * FROM users WHERE userEmail='$email' and contactNo='$contact'");
+$num=mysqli_fetch_array($query);
+if($num>0)
+{
+mysqli_query($bd, "update users set password='$password' WHERE userEmail='$email' and contactNo='$contact' ");
+$msg="Password Changed Successfully";
+
+}
+else
+{
+$errormsg="Invalid email id or Contact no";
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,15 +71,15 @@ https://github.com/WebDeveloperThawZinSoe
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="select2/select2.min.css">
     <!--===============================================================================================-->
     <style>
     /*[ FONT SIZE ]
@@ -10367,6 +10422,18 @@ https://github.com/WebDeveloperThawZinSoe
         }
     }
     </style>
+    <script type="text/javascript">
+function valid()
+{
+ if(document.forgot.password.value!= document.forgot.confirmpassword.value)
+{
+alert("Password and Confirm Password Field do not match  !!");
+document.forgot.confirmpassword.focus();
+return false;
+}
+return true;
+}
+</script>
     <!--===============================================================================================-->
 </head>
 
@@ -10379,13 +10446,13 @@ https://github.com/WebDeveloperThawZinSoe
                     <img src="images/img-01.png" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form  class="form-login" name="login" method="post" class="login100-form validate-form">
                     <span class="login100-form-title">
                         Member Login
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <input  class="input100" type="text" name="username" placeholder="Email" autofocus>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -10393,7 +10460,7 @@ https://github.com/WebDeveloperThawZinSoe
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <input class="input100" type="password"  name="password" placeholder="Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -10401,9 +10468,8 @@ https://github.com/WebDeveloperThawZinSoe
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Login
-                        </button>
+                        <input type="submit" name="submit" value="Login" class="login100-form-btn">
+                          
                     </div>
 
                     <div class="text-center p-t-12">
@@ -10490,14 +10556,14 @@ https://github.com/WebDeveloperThawZinSoe
 
 
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/popper.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="select2/select2.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script src="tilt/tilt.jquery.min.js"></script>
     <script>
     $('.js-tilt').tilt({
         scale: 1.1

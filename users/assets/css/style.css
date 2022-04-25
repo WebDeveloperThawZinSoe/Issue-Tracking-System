@@ -9,6 +9,10 @@ Premium: http://www.gridgum.com
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
+/* html {
+    scroll-behavior: smooth !important;
+  } */
+
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
@@ -413,8 +417,8 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
-    border-bottom: 1px solid #c9aa5f;
+    background: #000a3d;
+    border-bottom: 1px solid #000a3d;
 }
 
 .wrapper {
@@ -2216,7 +2220,7 @@ label {
 
 /*footer*/
 .site-footer {
-    background: #68dff0;
+    background: #000a3d !important;
     color: #fff;
     padding: 10px 0;
 }
