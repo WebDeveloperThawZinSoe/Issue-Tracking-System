@@ -116,9 +116,9 @@
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
 
-	box-shadow: inset 0px 2px 13px #999;
-	-moz-box-shadow: inset 0px 2px 13px #999;
-	-webkit-box-shadow: inset 0px 2px 13px #999;
+	box-shadow: inset 0 2px 13px #999;
+	-moz-box-shadow: inset 0 2px 13px #999;
+	-webkit-box-shadow: inset 0 2px 13px #999;
 }
 
 #qunit-tests table {
@@ -162,7 +162,7 @@
 
 #qunit-tests li li {
 	margin: 0.5em;
-	padding: 0.4em 0.5em 0.4em 0.5em;
+	padding: 0.4em 0.5em;
 	background-color: #fff;
 	border-bottom: none;
 	list-style-position: inside;

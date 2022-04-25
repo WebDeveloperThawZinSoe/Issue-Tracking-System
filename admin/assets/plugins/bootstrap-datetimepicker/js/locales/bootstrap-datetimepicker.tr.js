@@ -2,7 +2,7 @@
  * Turkish translation for bootstrap-datetimepicker
  * Serkan Algur <kaisercrazy_2@hotmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['tr'] = {
 		days: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"],
 		daysShort: ["Pz", "Pzt", "Sal", "Çrş", "Prş", "Cu", "Cts", "Pz"],

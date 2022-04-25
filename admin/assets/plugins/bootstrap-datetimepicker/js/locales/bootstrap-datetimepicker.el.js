@@ -1,7 +1,7 @@
 /**
 * Greek translation for bootstrap-datetimepicker
 */
-;(function($){
+(function($){
   $.fn.datetimepicker.dates['el'] = {
 	    days: ["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"],
 	    daysShort: ["Κυρ", "Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ", "Κυρ"],

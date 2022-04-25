@@ -35,7 +35,7 @@ ul.dynatree-container li
 	background-image: none;  /* no v-lines */
 
 	margin:0;
-	padding:1px 0 0 0;
+	padding:1px 0 0;
 }
 /* Suppress lines for last child node */
 ul.dynatree-container li.dynatree-lastsib
@@ -127,7 +127,7 @@ span.dynatree-connector
 
 span.dynatree-expander
 {
-	background-position: 0px -80px;
+	background-position: 0 -80px;
 	cursor: pointer;
 }
 span.dynatree-expander:hover
@@ -170,7 +170,7 @@ span.dynatree-expander:hover
 span.dynatree-checkbox
 {
 	margin-left: 3px;
-	background-position: 0px -32px;
+	background-position: 0 -32px;
 }
 span.dynatree-checkbox:hover
 {
@@ -203,7 +203,7 @@ span.dynatree-checkbox:hover
 span.dynatree-radio
 {
 	margin-left: 3px;
-	background-position: 0px -48px;
+	background-position: 0 -48px;
 }
 span.dynatree-radio:hover
 {
@@ -241,7 +241,7 @@ span.dynatree-radio:hover
 span.dynatree-icon /* Default icon */
 {
 	margin-left: 3px;
-	background-position: 0px 0px;
+	background-position: 0 0;
 }
 
 .dynatree-has-children span.dynatree-icon /* Default icon */
@@ -251,7 +251,7 @@ span.dynatree-icon /* Default icon */
 
 .dynatree-ico-cf span.dynatree-icon  /* Collapsed Folder */
 {
-	background-position: 0px -16px;
+	background-position: 0 -16px;
 }
 
 .dynatree-ico-ef span.dynatree-icon  /* Expanded Folder */
@@ -268,7 +268,7 @@ span.dynatree-icon /* Default icon */
 
 .dynatree-statusnode-error span.dynatree-icon
 {
-	background-position: 0px -112px;
+	background-position: 0 -112px;
 /*	background-image: url("ltError.gif");*/
 }
 
@@ -293,7 +293,7 @@ ul.dynatree-container a
 	color: black; /* inherit doesn't work on IE */
 	text-decoration: none;
 	vertical-align: top;
-	margin: 0px;
+	margin: 0;
 	margin-left: 3px;
 /*	outline: 0; /* @ Firefox, prevent dotted border after click */
 	/* Set transparent border to prevent jumping when active node gets a border

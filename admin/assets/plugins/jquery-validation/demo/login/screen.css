@@ -144,7 +144,7 @@
 		}
 
 	form label{
-		padding:0px 10px;
+		padding:0 10px;
 		width: 160px;
 		}
 
@@ -156,7 +156,7 @@
 
 	form fieldset fieldset label.error
 		{
-		margin-left:0px !important;
+		margin-left:0 !important;
 		width:200px !important;
 		}		
 
@@ -190,8 +190,8 @@
 
 	form fieldset
 		{
-		margin: 0 0 1.5em 0;
-		padding: 0 0 10px 0px;
+		margin: 0 0 1.5em;
+		padding: 0 0 10px;
 		
 		border: 1px solid #BFBAB0;
 		
@@ -211,7 +211,7 @@
 	
 	form fieldset.submit
 		{
-		padding: 0px 10px 10px 190px;
+		padding: 0 10px 10px 190px;
 		border-style: none;
 		
 		background-color: transparent;
@@ -231,11 +231,11 @@
 		font-variant:small-caps;
 		
 		margin-left: 1em;
-		padding:0px 5px;
+		padding:0 5px;
 		}
 		
 	form fieldset p{
- 		margin:10px 0px 0px 10px;
+ 		margin:10px 0 0 10px;
  		}
 	
 /*** FORM BLOCKS ***/
@@ -250,7 +250,7 @@
 		{
 		width: 100%;
 		
-		padding:5px 0px 10px 0;
+		padding:5px 0 10px;
 		border-top:1px dotted #ccc;
 		
 		display:block;
@@ -268,7 +268,7 @@
 
 	form label
 		{
-		padding:0px 10px;
+		padding:0 10px;
 		width: 160px;
 		float: left;
 		}
@@ -288,8 +288,8 @@
 		width:308px;
 		display: none;
 
-		margin:8px 0px 0px 180px;
-		padding:3px 0px 0px 5px;
+		margin:8px 0 0 180px;
+		padding:3px 0 0 5px;
 		border-top:1px dotted #ccc;
 		
 		clear:both;
@@ -300,8 +300,8 @@
 		font-weight: bold;
 		font-variant:small-caps;
 		
-		margin:8px 0px 0px 180px;
-		padding:3px 0px 0px 5px;
+		margin:8px 0 0 180px;
+		padding:3px 0 0 5px;
 		}
 
 	form fieldset fieldset,
@@ -323,18 +323,18 @@
 		{
 		width:auto !important;
 		white-space:nowrap;
-		padding:0px;
-		margin:0px;
+		padding:0;
+		margin:0;
 		display:block;
 		clear:both;
 		}
 		
 	form label label.error{
-		margin-left:0px;
+		margin-left:0;
 		}
 
 	form label.centered{
-		padding:0px 0px;
+		padding:0;
 		width:200px !important;
 		}
 		
@@ -377,8 +377,8 @@
 /*** FORM ELEMENTS ***/
 
 	form input.submit{
-		margin:10px 0px 10px 180px;
-		padding:0px 2px;
+		margin:10px 0 10px 180px;
+		padding:0 2px;
 		}
 
 	form input, textarea, select, 
@@ -402,8 +402,8 @@
 	form .input[type="radio"],
 	form .input[type="checkbox"]
 		{
-		margin:0px;
-		padding:0px;
+		margin:0;
+		padding:0;
 		position:relative;
 		top:3px;
 		}

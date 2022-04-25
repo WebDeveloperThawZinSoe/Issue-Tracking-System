@@ -2,7 +2,7 @@
  * Dutch translation for bootstrap-datetimepicker
  * Reinier Goltstein <mrgoltstein@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['nl'] = {
 		days: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
 		daysShort: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],

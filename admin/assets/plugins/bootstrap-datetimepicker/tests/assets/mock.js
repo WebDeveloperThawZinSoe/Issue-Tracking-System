@@ -1,4 +1,4 @@
-;(function(){
+(function(){
 
 window.patch_date = function patch(f){
     var NativeDate = window.Date;

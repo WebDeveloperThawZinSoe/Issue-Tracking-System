@@ -2,7 +2,7 @@
  * Norwegian (bokmål) translation for bootstrap-datetimepicker
  * Fredrik Sundmyhr <http://github.com/fsundmyhr>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['nb'] = {
 		days: ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"],
 		daysShort: ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"],

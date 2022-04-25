@@ -2,7 +2,7 @@
  * Malay translation for bootstrap-datetimepicker
  * Ateman Faiz <noorulfaiz@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['ms'] = {
 		days: ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"],
 		daysShort: ["Aha", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab", "Aha"],

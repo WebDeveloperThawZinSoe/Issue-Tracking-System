@@ -2,7 +2,7 @@
  * Slovene translation for bootstrap-datetimepicker
  * Gregor Rudolf <gregor.rudolf@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['sl'] = {
 		days: ["Nedelja", "Ponedeljek", "Torek", "Sreda", "Četrtek", "Petek", "Sobota", "Nedelja"],
 		daysShort: ["Ned", "Pon", "Tor", "Sre", "Čet", "Pet", "Sob", "Ned"],

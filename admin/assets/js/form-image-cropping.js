@@ -65,7 +65,7 @@ var ImageCropping = function () {
                     marginTop: '-' + Math.round(ry * c.y) + 'px'
                 });
             }
-        };
+        }
     };
     var runAnimationsTransitions = function () {
         $('#target3').Jcrop({
@@ -157,7 +157,7 @@ var ImageCropping = function () {
         // Function to insert named sections into interface
         function insertSection(k, v) {
             $('#interface').prepend($('<fieldset></fieldset>').attr('id', k).append($('<legend></legend>').append(v), '<div class="btn-toolbar"><div class="btn-group"></div></div>'));
-        };
+        }
         // Handler for option-setting buttons
         function setoptHandler(k, v) {
             return function (e) {
@@ -168,7 +168,7 @@ var ImageCropping = function () {
                 jcrop_api.setOptions(opt);
                 return false;
             };
-        };
+        }
         // Handler for animation buttons
         function animHandler(v) {
             return function (e) {
@@ -178,7 +178,7 @@ var ImageCropping = function () {
                 });
                 return false;
             };
-        };
+        }
         $('#bgo_buttons .btn:first,#bgc_buttons .btn:last').addClass('active');
         $('#interface').show();
     };

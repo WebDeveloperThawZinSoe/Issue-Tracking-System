@@ -2,7 +2,7 @@
  * Bahasa translation for bootstrap-datetimepicker
  * Azwar Akbar <azwar.akbar@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['id'] = {
 		days: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
 		daysShort: ["Mgu", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Mgu"],

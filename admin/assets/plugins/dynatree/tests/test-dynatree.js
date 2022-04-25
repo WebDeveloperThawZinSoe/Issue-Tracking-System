@@ -42,7 +42,7 @@ function simulateClick(selector) {
     $(selector).each(function(){
         this.dispatchEvent(e);
     });
-};
+}
 
 
 function addNodes(dtnode, level1, level2, level3, forceUpdate) {

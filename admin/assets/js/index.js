@@ -3,7 +3,7 @@ var Index = function () {
     var runChart1 = function () {
         function randValue() {
             return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
-        };
+        }
         var pageviews = [
             [1, randValue()],
             [2, randValue()],

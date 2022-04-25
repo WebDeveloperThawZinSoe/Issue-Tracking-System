@@ -38,8 +38,8 @@ body {
   -webkit-border-radius : 5px;
   background            : #7D7D7D;
   color                 : #FFF;
-  margin                : 2px 2px 0px 2px;
-  padding               : 5px 12px 5px 12px;
+  margin                : 2px 2px 0;
+  padding               : 5px 12px;
   text-align            : center;
   border                : 1px solid #7D7D7D;    
   text-decoration       : none; 
@@ -65,8 +65,8 @@ body {
   -webkit-border-radius : 5px;
   background            : #EA8511;
   color                 : #FFFFFF;
-  margin                : 2px 2px 0px 2px;
-  padding               : 5px 12px 5px 12px;
+  margin                : 2px 2px 0;
+  padding               : 5px 12px;
   text-align            : center;
   border                : 1px solid #EA8511;    
   text-decoration       : none; 

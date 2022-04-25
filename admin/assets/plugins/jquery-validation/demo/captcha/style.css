@@ -75,7 +75,7 @@ form {
 
 fieldset {
 	border: 1px solid #ddd;
-	margin: 0% 0% 2% 0%;
+	margin: 0% 0% 2%;
 	padding: 2%;
 }
 
@@ -136,5 +136,5 @@ fieldset input#captcha {
 
 fieldset input#submit {
 	display: block;
-	margin: 2% 0% 0% 0%;
+	margin: 2% 0% 0%;
 }

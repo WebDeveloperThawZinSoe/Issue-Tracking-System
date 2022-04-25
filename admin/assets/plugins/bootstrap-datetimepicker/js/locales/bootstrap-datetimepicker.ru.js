@@ -2,7 +2,7 @@
  * Russian translation for bootstrap-datetimepicker
  * Victor Taranenko <darwin@snowdale.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['ru'] = {
 		days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
 		daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],

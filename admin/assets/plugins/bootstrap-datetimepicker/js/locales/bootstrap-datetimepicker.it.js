@@ -2,7 +2,7 @@
  * Italian translation for bootstrap-datetimepicker
  * Enrico Rubboli <rubboli@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['it'] = {
 		days: ["Domenica", "Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato", "Domenica"],
 		daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"],

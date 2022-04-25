@@ -2,7 +2,7 @@
  * Serbian cyrillic translation for bootstrap-datetimepicker
  * Bojan Milosavlević <milboj@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['rs'] = {
 		days: ["Недеља","Понедељак", "Уторак", "Среда", "Четвртак", "Петак", "Субота", "Недеља"],
 		daysShort: ["Нед", "Пон", "Уто", "Сре", "Чет", "Пет", "Суб", "Нед"],

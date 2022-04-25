@@ -1,4 +1,4 @@
-;(function($){
+(function($){
 /**
  * jqGrid Chinese Translation for v4.2
  * henryyan 2011.11.30

@@ -801,7 +801,7 @@ var sh = {
 			function defaultGetHtml(highlighter, name)
 			{
 				return sh.toolbar.getButtonHtml(highlighter, name, sh.config.strings[name]);
-			};
+			}
 			
 			for (var i = 0; i < list.length; i++)
 				html += (items[list[i]].getHtml || defaultGetHtml)(highlighter, list[i]);
@@ -843,7 +843,7 @@ var sh = {
 					;
 
 				return match ? match[1] : null;
-			};
+			}
 			
 			var highlighter = getHighlighterById(findParentElement(target, '.syntaxhighlighter').id),
 				commandName = getValue('command')
@@ -1033,7 +1033,7 @@ var sh = {
 function hasClass(target, className)
 {
 	return target.className.indexOf(className) != -1;
-};
+}
 
 /**
  * Adds CSS class name to the target DOM element.
@@ -1044,7 +1044,7 @@ function addClass(target, className)
 {
 	if (!hasClass(target, className))
 		target.className += ' ' + className;
-};
+}
 
 /**
  * Removes CSS class name from the target DOM element.
@@ -1054,7 +1054,7 @@ function addClass(target, className)
 function removeClass(target, className)
 {
 	target.className = target.className.replace(className, '');
-};
+}
 
 /**
  * Converts the source to array object. Mostly used for function arguments and 
@@ -1070,7 +1070,7 @@ function toArray(source)
 		result.push(source[i]);
 		
 	return result;
-};
+}
 
 /**
  * Splits block of text into lines.
@@ -1091,7 +1091,7 @@ function getHighlighterId(id)
 {
 	var prefix = 'highlighter_';
 	return id.indexOf(prefix) == 0 ? id : prefix + id;
-};
+}
 
 /**
  * Finds Highlighter instance by ID.
@@ -1101,7 +1101,7 @@ function getHighlighterId(id)
 function getHighlighterById(id)
 {
 	return sh.vars.highlighters[getHighlighterId(id)];
-};
+}
 
 /**
  * Finds highlighter's DIV container.
@@ -1111,7 +1111,7 @@ function getHighlighterById(id)
 function getHighlighterDivById(id)
 {
 	return document.getElementById(getHighlighterId(id));
-};
+}
 
 /**
  * Stores highlighter so that getHighlighterById() can do its thing. Each
@@ -1121,7 +1121,7 @@ function getHighlighterDivById(id)
 function storeHighlighter(highlighter)
 {
 	sh.vars.highlighters[getHighlighterId(highlighter.id)] = highlighter;
-};
+}
 
 /**
  * Looks for a child or parent node which has specified classname.
@@ -1155,7 +1155,7 @@ function findElement(target, search, reverse /* optional */)
 		found = findElement(nodes[i], search, reverse);
 	
 	return found;
-};
+}
 
 /**
  * Looks for a parent node which has specified classname.
@@ -1167,7 +1167,7 @@ function findElement(target, search, reverse /* optional */)
 function findParentElement(target, className)
 {
 	return findElement(target, className, true);
-};
+}
 
 /**
  * Finds an index of element in the array.
@@ -1185,7 +1185,7 @@ function indexOf(array, searchElement, fromIndex)
 			return i;
 	
 	return -1;
-};
+}
 
 /**
  * Generates a unique element ID.
@@ -1193,7 +1193,7 @@ function indexOf(array, searchElement, fromIndex)
 function guid(prefix)
 {
 	return (prefix || '') + Math.round(Math.random() * 1000000).toString();
-};
+}
 
 /**
  * Merges two objects. Values from obj2 override values in obj1.
@@ -1213,7 +1213,7 @@ function merge(obj1, obj2)
 		result[name] = obj2[name];
 		
 	return result;
-};
+}
 
 /**
  * Attempts to convert string to boolean.
@@ -1224,7 +1224,7 @@ function toBoolean(value)
 {
 	var result = { "true" : true, "false" : false }[value];
 	return result == null ? value : result;
-};
+}
 
 /**
  * Opens up a centered popup window.
@@ -1251,7 +1251,7 @@ function popup(url, name, width, height, options)
 	var win = window.open(url, name, options);
 	win.focus();
 	return win;
-};
+}
 
 /**
  * Adds event handler to the target object.
@@ -1275,7 +1275,7 @@ function attachEvent(obj, type, func, scope)
 		}
 			
 		func.call(scope || window, e);
-	};
+	}
 	
 	if (obj.attachEvent) 
 	{
@@ -1285,7 +1285,7 @@ function attachEvent(obj, type, func, scope)
 	{
 		obj.addEventListener(type, handler, false);
 	}
-};
+}
 
 /**
  * Displays an alert.
@@ -1294,7 +1294,7 @@ function attachEvent(obj, type, func, scope)
 function alert(str)
 {
 	window.alert(sh.config.strings.alert + str);
-};
+}
 
 /**
  * Finds a brush by its alias.
@@ -1339,7 +1339,7 @@ function findBrush(alias, showAlert)
 		alert(sh.config.strings.noBrush + alias);
 	
 	return result;
-};
+}
 
 /**
  * Executes a callback on each line and replaces each line with result from the callback.
@@ -1355,7 +1355,7 @@ function eachLine(str, callback)
 		
 	// include \r to enable copy-paste on windows (ie8) without getting everything on one line
 	return lines.join('\r\n');
-};
+}
 
 /**
  * This is a special trim which only removes first and last empty lines
@@ -1367,7 +1367,7 @@ function eachLine(str, callback)
 function trimFirstAndLastLines(str)
 {
 	return str.replace(/^[ ]*[\n]+|[\n]*[ ]*$/g, '');
-};
+}
 
 /**
  * Parses key/value pairs into hash object.
@@ -1419,7 +1419,7 @@ function parseParams(str)
 	}
 	
 	return result;
-};
+}
 
 /**
  * Wraps each line of the string into <code/> tag with given style applied to it.
@@ -1469,7 +1469,7 @@ function wrapLinesWithCode(str, css)
 		});
 
 	return str;
-};
+}
 
 /**
  * Pads number with zeros until it's length is the same as given length.
@@ -1486,7 +1486,7 @@ function padNumber(number, length)
 		result = '0' + result;
 	
 	return result;
-};
+}
 
 /**
  * Replaces tabs with spaces.
@@ -1503,7 +1503,7 @@ function processTabs(code, tabSize)
 		tab += ' ';
 
 	return code.replace(/\t/g, tab);
-};
+}
 
 /**
  * Replaces tabs with smart spaces.
@@ -1532,7 +1532,7 @@ function processSmartTabs(code, tabSize)
 			+ spaces.substr(0, count)
 			+ line.substr(pos + 1, line.length) // pos + 1 will get rid of the tab
 			;
-	};
+	}
 
 	// Go through all the lines and do the 'smart tabs' magic.
 	code = eachLine(code, function(line)
@@ -1555,7 +1555,7 @@ function processSmartTabs(code, tabSize)
 	});
 	
 	return code;
-};
+}
 
 /**
  * Performs various string fixes based on configuration.
@@ -1571,7 +1571,7 @@ function fixInputString(str)
 		str = str.replace(br, '');
 		
 	return str;
-};
+}
 
 /**
  * Removes all white space at the begining and end of a string.
@@ -1582,7 +1582,7 @@ function fixInputString(str)
 function trim(str)
 {
 	return str.replace(/^\s+|\s+$/g, '');
-};
+}
 
 /**
  * Unindents a block of text by the lowest common indent amount.
@@ -1621,7 +1621,7 @@ function unindent(str)
 			lines[i] = lines[i].substr(min);
 	
 	return lines.join('\n');
-};
+}
 
 /**
  * Callback method for Array.sort() which sorts matches by
@@ -1648,7 +1648,7 @@ function matchesSortCallback(m1, m2)
 	}
 	
 	return 0;
-};
+}
 
 /**
  * Executes given regular expression on provided code and returns all
@@ -1663,7 +1663,7 @@ function getMatches(code, regexInfo)
 	function defaultAdd(match, regexInfo)
 	{
 		return match[0];
-	};
+	}
 	
 	var index = 0,
 		match = null,
@@ -1682,7 +1682,7 @@ function getMatches(code, regexInfo)
 	}
 	
 	return matches;
-};
+}
 
 /**
  * Turns all URLs in the code into <a/> tags.
@@ -1711,7 +1711,7 @@ function processUrls(code)
 		
 		return '<a href="' + m + '">' + m + '</a>' + suffix;
 	});
-};
+}
 
 /**
  * Finds all <SCRIPT TYPE="syntaxhighlighter" /> elementss.
@@ -1728,7 +1728,7 @@ function getSyntaxHighlighterScriptTags()
 			result.push(tags[i]);
 			
 	return result;
-};
+}
 
 /**
  * Strips <![CDATA[]]> from <SCRIPT /> content because it should be used
@@ -1762,7 +1762,7 @@ function stripCData(original)
 	}
 	
 	return changed ? copy : original;
-};
+}
 
 
 /**
@@ -1814,7 +1814,7 @@ function quickCodeHandler(e)
 		textarea.parentNode.removeChild(textarea);
 		removeClass(highlighterDiv, 'source');
 	});
-};
+}
 
 /**
  * Match object.
@@ -2118,7 +2118,7 @@ sh.Highlighter.prototype = {
 				indent = /^(&nbsp;|\s)+/.exec(line),
 				spaces = null,
 				lineNumber = lineNumbers ? lineNumbers[i] : firstLine + i;
-				;
+				
 
 			if (indent != null)
 			{
@@ -2167,7 +2167,7 @@ sh.Highlighter.prototype = {
 		{
 			var result = match ? (match.brushName || brushName) : brushName;
 			return result ? result + ' ' : '';
-		};
+		}
 		
 		// Finally, go through the final list of matches and pull the all
 		// together adding everything in between that isn't a match.
@@ -2391,7 +2391,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
  * @license
  * Dual licensed under the MIT and GPL licenses.
  */
-;(function()
+(function()
 {
 	// CommonJS
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
@@ -2423,7 +2423,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 			];
 	
 		this.forHtmlScript(r.scriptScriptTags);
-	};
+	}
 
 	Brush.prototype	= new SyntaxHighlighter.Highlighter();
 	Brush.aliases	= ['js', 'jscript', 'javascript'];

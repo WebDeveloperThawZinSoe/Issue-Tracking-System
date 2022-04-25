@@ -2,7 +2,7 @@
  * Hebrew translation for bootstrap-datetimepicker
  * Sagie Maoz <sagie@maoz.info>
  */
-;(function($){
+(function($){
   $.fn.datetimepicker.dates['he'] = {
       days: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת", "ראשון"],
       daysShort: ["א", "ב", "ג", "ד", "ה", "ו", "ש", "א"],
