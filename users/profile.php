@@ -4,22 +4,24 @@ error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['login'])==0)
   { 
-header('location:index.php');
+header('location:../index.php');
 }
 else{
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/Yangon');
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 
 
 if(isset($_POST['submit']))
 {
+date_default_timezone_set('Asia/Yangon');
+$currentTime_db = date( 'd-m-Y h:i:s A', time () );
 $fname=$_POST['fullname'];
 $contactno=$_POST['contactno'];
 $address=$_POST['address'];
 $state=$_POST['state'];
 $country=$_POST['country'];
 $pincode=$_POST['pincode'];
-$query=mysqli_query($bd, "update users set fullName='$fname',contactNo='$contactno',address='$address',State='$state',country='$country',pincode='$pincode' where userEmail='".$_SESSION['login']."'");
+$query=mysqli_query($bd, "update users set fullName='$fname',contactNo='$contactno',address='$address',campus='$state',department='$country',position='$pincode',updationDate='$currentTime_db' where userEmail='".$_SESSION['login']."'");
 if($query)
 {
 $successmsg="Profile Successfully !!";
@@ -31,28 +33,9 @@ $errormsg="Profile not updated !!";
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
-    <title>KBTC | Complain Management System </title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker.css" />
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
-
-</head>
+<?php
+    include_once("includes/html_head.php");
+?>
 
 <body>
 
@@ -101,12 +84,13 @@ $errormsg="Profile not updated !!";
 
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Full Name</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <input type="text" name="fullname" required="required"
                                             value="<?php echo htmlentities($row['fullName']);?>" class="form-control">
                                     </div>
+                                    <br>
                                     <label class="col-sm-2 col-sm-2 control-label">User Email </label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <input type="email" name="useremail" required="required"
                                             value="<?php echo htmlentities($row['userEmail']);?>" class="form-control"
                                             readonly>
@@ -116,12 +100,13 @@ $errormsg="Profile not updated !!";
 
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Contact</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <input type="text" name="contactno" required="required"
                                             value="<?php echo htmlentities($row['contactNo']);?>" class="form-control">
                                     </div>
+                                    <br>
                                     <label class="col-sm-2 col-sm-2 control-label">Address </label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <textarea name="address" required="required"
                                             class="form-control"><?php echo htmlentities($row['address']);?></textarea>
                                     </div>
@@ -129,10 +114,10 @@ $errormsg="Profile not updated !!";
 
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Campus</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <select name="state" required="required" class="form-control">
                                             <option value="<?php echo htmlentities($row['State']);?>"  >
-                                                <?php echo htmlentities($st=$row['State']);?>SelectCampus</option>
+                                                <?php echo htmlentities($st=$row['State']);?>Select Campus</option>
                                             <?php $sql=mysqli_query($bd, "select stateName from state ");
 while ($rw=mysqli_fetch_array($sql)) {
   if($rw['stateName']==$st)
@@ -149,23 +134,43 @@ while ($rw=mysqli_fetch_array($sql)) {
 ?>
 
                                         </select>
+                                        <br>
                                     </div>
                                     <label class="col-sm-2 col-sm-2 control-label">Departenmt </label>
-                                    <div class="col-sm-4">
-                                        <input type="text" name="country" required="required"
-                                            value="<?php echo htmlentities($row['country']);?>" class="form-control">
+                                    <div class="col-sm-6">
+                                        <select name="country" required="required" class="form-control">
+                                            <option value="<?php echo htmlentities($row['State']);?>"  >
+                                                <?php echo htmlentities($st=$row['State']);?>Select Department</option>
+                                            <?php $sql=mysqli_query($bd, "select department_name from department ");
+while ($rw=mysqli_fetch_array($sql)) {
+  if($rw['department_name']==$st)
+  {
+    continue;
+  }
+  else
+  {
+  ?>
+                                            <option value="<?php echo htmlentities($rw['department_name']);?>">
+                                                <?php echo htmlentities($rw['department_name']);?></option>
+                                            <?php
+}}
+?>
+
+                                        </select>
+                                        <br>
                                     </div>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Position</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" name="pincode" maxlength="6" required="required"
-                                            value="<?php echo htmlentities($row['pincode']);?>" class="form-control">
+                                    <div class="col-sm-6">
+                                        <input type="text" name="pincode"  required="required"
+                                            value="<?php echo htmlentities($row['position']);?>" class="form-control">
                                     </div>
+                                    <br>
                                     <label class="col-sm-2 col-sm-2 control-label">Reg Date </label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <input type="text" name="regdate" required="required"
                                             value="<?php echo htmlentities($row['regDate']);?>" class="form-control"
                                             readonly>
@@ -176,8 +181,8 @@ while ($rw=mysqli_fetch_array($sql)) {
                                 <?php } ?>
 
                                 <div class="form-group">
-                                    <div class="col-sm-10" style="padding-left:25% ">
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                    <div class="col-sm-3" >
+                                        <button type="submit" name="submit" class="btn btn-warning">Update</button>
                                     </div>
                                 </div>
 

@@ -8,34 +8,10 @@ header('location:index.php');
 }
 else{
 ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<?php
+  include_once "includes/html_head.php";
+?>
 
-    <title>CMS | Complaint History</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
-    <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
-
-    <link href="assets/css/table-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
 
   <body>
 
@@ -45,6 +21,7 @@ else{
 
       <section id="main-content">
           <section class="wrapper">
+            <br> <br>
           	<h3><i class="fa fa-angle-right"></i>Your Complaint Hstory</h3>
 		  		<div class="row mt">
 			  		<div class="col-lg-12">
@@ -53,6 +30,7 @@ else{
                             <table class="table table-bordered table-striped table-condensed">
                               <thead>
                               <tr>
+                                  <th>No</th>
                                   <th>Complaint Number</th>
                                   <th>Reg Date</th>
                                   <th>last Updation date</th>
@@ -62,12 +40,17 @@ else{
                               </tr>
                               </thead>
                               <tbody>
-  <?php $query=mysqli_query($bd, "select * from tblcomplaints where userId='".$_SESSION['id']."'");
+  <?php
+ $i = 0;
+ $query=mysqli_query($bd, "select * from tblcomplaints where userId='".$_SESSION['id']."'");
 while($row=mysqli_fetch_array($query))
 {
   ?>
                               <tr>
-                                  <td align="center"><?php echo htmlentities($row['complaintNumber']);?></td>
+                                <td align="center">
+                                  <?php ++$i; echo $i;  ?>
+                              </td>
+                                  <td align="center">#<?php echo htmlentities($row['complaintNumber']);?></td>
                                   <td align="center"><?php echo htmlentities($row['regDate']);?></td>
                                  <td align="center"><?php echo  htmlentities($row['lastUpdationDate']);
 
@@ -86,7 +69,7 @@ if($status=="closed") {
 <button type="button" class="btn btn-success">Closed</button>
 <?php } ?>
                                    <td align="center">
-                                   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>">
+                                   <a target="_blank" href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>">
 <button type="button" class="btn btn-primary">View Details</button></a>
                                    </td>
                                 </tr>
