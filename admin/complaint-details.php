@@ -65,7 +65,7 @@ while($row=mysqli_fetch_array($query))
 ?>									
 										<tr>
 											<td><b>Complaint Number</b></td>
-											<td><?php echo htmlentities($row['complaintNumber']);?></td>
+											<td>#<?php echo htmlentities($row['complaintNumber']);?></td>
 											<td><b>Complainant Name</b></td>
 											<td> <?php echo htmlentities($row['name']);?></td>
 											<td><b>Reg Date</b></td>

@@ -10,7 +10,7 @@ $ret=mysqli_query($bd, "SELECT * FROM admin WHERE username='$username' and passw
 $num=mysqli_fetch_array($ret);
 if($num>0)
 {
-$extra="change-password.php";//
+$extra="notprocess-complaint.php";//
 $_SESSION['alogin']=$_POST['username'];
 $_SESSION['id']=$num['id'];
 $host=$_SERVER['HTTP_HOST'];
@@ -35,7 +35,7 @@ exit();
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CMS | Admin login</title>
+	<title>KBTC | Admin login</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -51,19 +51,15 @@ exit();
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
-			  		CMS | Admin
+			  	<a class="brand" href="index.php">
+				  KBTC | Admin
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 				
 					<ul class="nav pull-right">
 
-						<li><a href="http://localhost/Complaint Management System/">
-						Back to Portal
 						
-						</a></li>
-
 						
 
 						
@@ -75,31 +71,32 @@ exit();
 
 
 
+
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span4 offset4">
 					<form class="form-vertical" method="post">
-						<div class="module-head">
-							<h3>Sign In</h3>
+						<div class="module-head" style="background-color:#000a3d;">
+							<h3 style="font-size: 22px;text-align:center;padding-top:20px;padding-bottom:20px;color:white">Sign In</h3>
 						</div>
-						<span style="color:red;" ><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></span>
+						<p style="color:red; text-align: center !important;paddoing-top:10px;padding-bottom: 10px;font-size:18px " ><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></p>
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="text" id="inputEmail" name="username" placeholder="Username">
+									<input style="height:40px;font-size:20px"  class="span12" type="text" id="inputEmail" name="username" placeholder="Username">
 								</div>
 							</div>
 							<div class="control-group">
-								<div class="controls row-fluid">
-						<input class="span12" type="password" id="inputPassword" name="password" placeholder="Password">
+								<div  class="controls row-fluid">
+						<input style="height:40px;font-size:20px" class="span12" type="password" id="inputPassword" name="password" placeholder="Password">
 								</div>
 							</div>
 						</div>
 						<div class="module-foot">
 							<div class="control-group">
 								<div class="controls clearfix">
-									<button type="submit" class="btn btn-primary pull-right" name="submit">Login</button>
+									<button style="font-size: 20px;" type="submit" class="btn btn-primary pull-right" name="submit">Login</button>
 									
 								</div>
 							</div>
@@ -114,7 +111,7 @@ exit();
 		<div class="container">
 			 
 
-			<b class="copyright">&copy; 2020 CMS </b> All rights reserved.
+			<b  class="copyright">&copy; 2022 CMS </b> All rights reserved.
 		</div>
 	</div>
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>

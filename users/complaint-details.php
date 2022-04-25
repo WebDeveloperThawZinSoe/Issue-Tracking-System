@@ -19,6 +19,7 @@ else{ ?>
 <?php include('includes/sidebar.php');?>
       <section id="main-content">
           <section class="wrapper site-min-height">
+            <br> <br>
           	<h3><i class="fa fa-angle-right"></i> Complaint Details</h3>
             <hr />
 

@@ -77,19 +77,19 @@ while($row=mysqli_fetch_array($ret1))
 
         <tr height="50">
       <td><b>State:</b></td>
-      <td><?php echo htmlentities($row['State']); ?></td>
+      <td><?php echo htmlentities($row['campus']); ?></td>
     </tr>
 
 
         <tr height="50">
       <td><b>Country:</b></td>
-      <td><?php echo htmlentities($row['country']); ?></td>
+      <td><?php echo htmlentities($row['department']); ?></td>
     </tr>
 
 
         <tr height="50">
       <td><b>Pincode:</b></td>
-      <td><?php echo htmlentities($row['pincode']); ?></td>
+      <td><?php echo htmlentities($row['position']); ?></td>
     </tr>  
 
 
