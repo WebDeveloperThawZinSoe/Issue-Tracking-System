@@ -2370,9 +2370,9 @@ table th[class*="span"],
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-  -moz-border-radius: 0 6px 6px 6px;
-  border-radius: 0 6px 6px 6px;
+  -webkit-border-radius: 0 6px 6px;
+  -moz-border-radius: 0 6px 6px;
+  border-radius: 0 6px 6px;
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -3415,7 +3415,7 @@ input[type="submit"].btn.btn-mini {
 }
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover {
-  border-color: transparent #ddd #ddd #ddd;
+  border-color: transparent #ddd #ddd;
 }
 .tabs-left > .nav-tabs > li,
 .tabs-right > .nav-tabs > li {
@@ -3520,7 +3520,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   float: left;
   display: block;
-  padding: 10px 20px 10px;
+  padding: 10px 20px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -3681,7 +3681,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 15px 10px;
+  padding: 10px 15px;
   color: #777777;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;

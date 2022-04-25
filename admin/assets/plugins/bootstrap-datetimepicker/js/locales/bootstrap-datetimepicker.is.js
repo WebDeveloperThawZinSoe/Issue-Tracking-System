@@ -2,7 +2,7 @@
  * Icelandic translation for bootstrap-datetimepicker
  * Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['is'] = {
 		days: ["Sunnudagur", "Mánudagur", "Þriðjudagur", "Miðvikudagur", "Fimmtudagur", "Föstudagur", "Laugardagur", "Sunnudagur"],
 		daysShort: ["Sun", "Mán", "Þri", "Mið", "Fim", "Fös", "Lau", "Sun"],

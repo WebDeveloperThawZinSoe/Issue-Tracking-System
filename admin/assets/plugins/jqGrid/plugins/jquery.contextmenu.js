@@ -81,7 +81,7 @@
     var index = hash.length - 1;
     $(this).bind('contextmenu', function(e) {
       // Check if onContextMenu() defined
-      var bShowContext = (!!hash[index].onContextMenu) ? hash[index].onContextMenu(e) : true;
+      var bShowContext = (hash[index].onContextMenu) ? hash[index].onContextMenu(e) : true;
 	  currentTarget = e.target;
       if (bShowContext) {
 		display(index, this, e );
@@ -109,7 +109,7 @@
     // if there's an onShowMenu, run it now -- must run after content has been added
 		// if you try to alter the content variable before the menu.html(), IE6 has issues
 		// updating the content
-    if (!!cur.onShowMenu) menu = cur.onShowMenu(e, menu);
+    if (cur.onShowMenu) menu = cur.onShowMenu(e, menu);
 
     $.each(cur.bindings, function(id, func) {
       $('#'+id, menu).bind('click', function() {

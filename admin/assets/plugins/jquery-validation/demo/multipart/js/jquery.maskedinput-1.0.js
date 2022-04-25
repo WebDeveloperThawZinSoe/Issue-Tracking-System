@@ -40,7 +40,7 @@
 			res.end = res.begin + range.text.length;
 		}
 		return res;
-	};
+	}
 
 	function setCaretPosition(ctl, pos){
 		if(ctl.setSelectionRange){
@@ -53,7 +53,7 @@
 			range.moveStart('character', pos);
 			range.select();
 		}
-	};
+	}
 	
 	//Predefined character definitions
 	var charMap={
@@ -206,7 +206,7 @@
 					if(!locked[i])
 						buffer[i]=settings.placeholder;
 				}				
-			};
+			}
 			
 			function writeBuffer(pos){
 				var s="";
@@ -217,7 +217,7 @@
 				}
 				input.val(s);
 				return s;
-			};
+			}
 			
 			function checkVal(){	
 				//try to place charcters where they belong
@@ -240,7 +240,7 @@
 					input.val("");	
 					clearBuffer(0,mask.length);
 				}					
-			};				
+			}				
 		});
 	};
 })(jQuery);

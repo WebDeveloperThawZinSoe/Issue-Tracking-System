@@ -4,7 +4,7 @@
 * version: 2.1.2
 * Licensed under the MIT license
 */
-;(function($) {
+(function($) {
 	if(!$.browser){
 		$.browser = {};
 		$.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase());
@@ -301,7 +301,7 @@
 						}
 					});
 					return this;
-				};
+				}
 
 				function getInputSelection(el) {
 					var start = 0, end = 0, normalizedValue, range, textInputRange, len, endRange;

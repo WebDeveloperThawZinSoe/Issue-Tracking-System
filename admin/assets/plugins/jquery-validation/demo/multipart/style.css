@@ -83,11 +83,11 @@ img {
 }
 
 img.float-right {
-	margin: 5px 0px 10px 10px;
+	margin: 5px 0 10px 10px;
 }
 
 img.float-left {
-	margin: 5px 10px 10px 0px;
+	margin: 5px 10px 10px 0;
 }
 
 code {
@@ -296,7 +296,7 @@ input.submitbutton {
 
 #header-tabs ul {
 	margin: 0;
-	padding: 2px 0px 0px 0px;
+	padding: 2px 0 0;
 	list-style: none;
 }
 
@@ -375,7 +375,7 @@ input.submitbutton {
 }
 
 #sidebar h1 {
-	padding: 8px 0px 3px 25px;
+	padding: 8px 0 3px 25px;
 	background: url(square_arrow.gif) no-repeat 0% .7em;
 	text-transform: none;
 	color: #339900;
@@ -521,7 +521,7 @@ body .mainText {
 .mainText h3 {
 	font-size: 120%;
 	font-weight: 900;
-	margin: 14px 0 0 0;
+	margin: 14px 0 0;
 	text-align: center;
 	color: #000033;
 }
@@ -585,7 +585,7 @@ label {
 	width: 298px;
 	border-right: 1px dotted #099;
 	padding-right: 5px;
-	margin: 0 0 8px 0;
+	margin: 0 0 8px;
 	float: left;
 	clear: left;
 	display: block;
@@ -630,7 +630,7 @@ p.formDisclaimer {
 }
 
 div.buttonWrapper {
-	margin: 28px 0 14px 0;
+	margin: 28px 0 14px;
 	clear: both;
 	text-align: center;
 }

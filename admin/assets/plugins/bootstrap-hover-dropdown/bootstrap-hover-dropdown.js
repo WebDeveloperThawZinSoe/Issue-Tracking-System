@@ -11,7 +11,7 @@
  *
  * http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
  */
-;(function($, window, undefined) {
+(function($, window, undefined) {
     // don't do anything if touch is supported
     // (plugin causes some issues on mobile)
     if('ontouchstart' in document) return;

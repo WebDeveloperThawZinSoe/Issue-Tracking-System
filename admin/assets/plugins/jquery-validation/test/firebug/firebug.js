@@ -418,7 +418,7 @@ if (!("console" in window) || !("firebug" in console)) {
                     return "&quot;";
             }
             return "?";
-        };
+        }
         return String(value).replace(/[<>&"']/g, replaceChars);
     }
 
@@ -596,7 +596,7 @@ if (!("console" in window) || !("firebug" in console)) {
         );
         
         logRow(html, "error");
-    };
+    }
 
     function onKeyDown(event)
     {

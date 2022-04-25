@@ -2,7 +2,7 @@
  * Brazilian translation for bootstrap-datetimepicker
  * Cauan Cabral <cauan@radig.com.br>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['pt-BR'] = {
         format: 'dd/mm/yyyy',
 		days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],

@@ -251,7 +251,7 @@ Test.prototype = {
 			run();
 		} else {
 			synchronize(run, true);
-		};
+		}
 	}
 
 };
@@ -440,7 +440,7 @@ var QUnit = {
 
 //We want access to the constructor's prototype
 (function() {
-	function F(){};
+	function F(){}
 	F.prototype = QUnit;
 	QUnit = new F();
 	//Make F QUnit's constructor so that we can add to the prototype later
@@ -1231,10 +1231,10 @@ QUnit.equiv = function () {
 QUnit.jsDump = (function() {
 	function quote( str ) {
 		return '"' + str.toString().replace(/"/g, '\\"') + '"';
-	};
+	}
 	function literal( o ) {
 		return o + '';
-	};
+	}
 	function join( pre, arr, post ) {
 		var s = jsDump.separator(),
 			base = jsDump.indent(),
@@ -1244,7 +1244,7 @@ QUnit.jsDump = (function() {
 		if ( !arr )
 			return pre + post;
 		return [ pre, inner + arr, base + post ].join(s);
-	};
+	}
 	function array( arr, stack ) {
 		var i = arr.length, ret = Array(i);
 		this.up();
@@ -1252,7 +1252,7 @@ QUnit.jsDump = (function() {
 			ret[i] = this.parse( arr[i] , undefined , stack);
 		this.down();
 		return join( '[', ret, ']' );
-	};
+	}
 
 	var reName = /^function (\w+)/;
 
@@ -1425,7 +1425,7 @@ function getText( elems ) {
 	}
 
 	return ret;
-};
+}
 
 //from jquery.js
 function inArray( elem, array ) {

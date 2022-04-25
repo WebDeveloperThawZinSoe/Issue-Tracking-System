@@ -2,7 +2,7 @@
  * Hungarian translation for bootstrap-datetimepicker
  * darevish <http://github.com/darevish>
  */
-;(function($){
+(function($){
 	$.fn.datetimepicker.dates['hu'] = {
 		days: ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"],
 		daysShort: ["Vas", "Hét", "Ked", "Sze", "Csü", "Pén", "Szo", "Vas"],

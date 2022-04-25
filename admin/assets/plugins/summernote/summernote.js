@@ -61,8 +61,8 @@
     var compact = function(array) {
       var aResult = [];
       for (var idx = 0, sz = array.length; idx < sz; idx ++) {
-        if (array[idx]) { aResult.push(array[idx]); };
-      };
+        if (array[idx]) { aResult.push(array[idx]); }
+      }
       return aResult;
     };
 
@@ -155,7 +155,7 @@
         aNext.push(node);
         if (pred(node)) { break; }
         node = node.previousSibling;
-      };
+      }
       return aNext;
     };
     
@@ -168,7 +168,7 @@
         aNext.push(node);
         if (pred(node)) { break; }
         node = node.nextSibling;
-      };
+      }
       return aNext;
     };
     
@@ -915,7 +915,7 @@
             welLinkBtn.addClass('disabled').attr('disabled', true);
           }
 
-          if (!linkInfo.text) { welLinkText.html(welLinkUrl.val()); };
+          if (!linkInfo.text) { welLinkText.html(welLinkUrl.val()); }
         }).trigger('focus');
         welLinkBtn.click(function(event) {
           welLinkDialog.modal('hide'); //hide and createLink (ie9+)
@@ -1050,7 +1050,7 @@
 
     var hMousedown = function(event) {
       //preventDefault Selection for FF, IE8+
-      if (dom.isImg(event.target)) { event.preventDefault(); };
+      if (dom.isImg(event.target)) { event.preventDefault(); }
     };
     
     var hToolbarAndPopoverUpdate = function(event) {
@@ -1618,7 +1618,7 @@
           sToolbar += aToolbarItem[group[1][i]];
         }
         sToolbar += '</div>';
-      };
+      }
 
       sToolbar = '<div class="note-toolbar btn-toolbar">' + sToolbar + '</div>';
 
@@ -1708,7 +1708,7 @@
       }
       if (this.length > 0 && options.oninit) { // callback on init
         options.oninit();
-      };
+      }
     },
     // get the HTML contents of note or set the HTML contents of note.
     code: function(sHTML) {
