@@ -45,7 +45,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		<div class="container">
 			<div class="row">
 <?php include('include/sidebar.php');?>				
-			<div class="span9">
+			<div class="col-md-8">
 					<div class="content">
 
 						

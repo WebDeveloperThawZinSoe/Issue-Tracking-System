@@ -10149,7 +10149,7 @@ $errormsg="Invalid email id or Contact no";
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding: 177px 130px 33px 95px;
+        padding: 45px 130px 33px 95px;
     }
 
     /*------------------------------------------------------------------

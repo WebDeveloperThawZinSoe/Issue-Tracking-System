@@ -1,5 +1,15 @@
-<div class="col-lg-4">
+<div class="col-lg-3">
     <div id="accordion">
+    <div class="card">
+            <div class="card-header">
+				<a href=" dashboard.php">
+                <i class="icon-dashboard"></i>
+                    Dashboard
+                </a>
+            </div>
+          
+        </div>
+   
         <div class="card">
             <div class="card-header">
                 <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
@@ -60,7 +70,7 @@ $num1 = mysqli_num_rows($rt);
             </div>
             <div id="collapseFour" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                    <li><a href=""> <i class="menu-icon icon-group"></i>View All Users</a></li>
+                    <li><a href="manage-users.php"> <i class="menu-icon icon-group"></i>View All Users</a></li>
                     <li><a href=""> <i class="menu-icon icon-group"></i> Add New User</a></li>
                 </div>
             </div>
