@@ -10,27 +10,34 @@ else{
 
 if(isset($_POST['submit']))
 {
-$uid=$_SESSION['id'];
-$category=$_POST['category'];
-$subcat=$_POST['subcategory'];
-$complaintype=$_POST['complaintype'];
-$state=$_POST['state'];
-$noc=$_POST['noc'];
-$complaintdetials=$_POST['complaindetails'];
-$compfile=$_FILES["compfile"]["name"];
+    $user = $_POST['user'];
+    $issuetitle = htmlspecialchars($_POST["issuetitle"]);
+    $category = htmlspecialchars($_POST["category"]);
+    $priority = htmlspecialchars($_POST["priority"]);
+    $location = htmlspecialchars($_POST["location"]);
+    $solved = htmlspecialchars($_POST["solved"]);
+    $openBy = htmlspecialchars($_POST["openBy"]);
+    $assignTo = htmlspecialchars($_POST["assignTo"]);
+    $checked = htmlspecialchars($_POST["checked"]);
+    $closed = htmlspecialchars($_POST["closed"]);
+    $detail = htmlspecialchars($_POST["detail"]);
+    $complaintdetials=$_POST['complaindetails'];
+    $rand = rand(0,1000);
+    $compfile=$_FILES["compfile"]["name"];
+    $compfile=$rand."_".$compfile;
 
+move_uploaded_file($_FILES["compfile"]["tmp_name"],"complaintdocs/".$compfile);
+$query=mysqli_query($bd, "INSERT INTO tblcomplaints(ticketCreateUser, issueType, issueTitle, priority,  location, openedBy, assignedTo, solvedBy, checkedBy, closedBy, issueDetails, file) VALUES ('$user','$category','$issuetitle','$priority','$location','$openBy','$assignTo','$solved','$checked','$closed','$detail','$compfile')");
 
-
-move_uploaded_file($_FILES["compfile"]["tmp_name"],"complaintdocs/".$_FILES["compfile"]["name"]);
-$query=mysqli_query($bd, "insert into tblcomplaints(userId,category,subcategory,complaintType,state,noc,complaintDetails,complaintFile) values('$uid','$category','$subcat','$complaintype','$state','$noc','$complaintdetials','$compfile')");
-
-$sql=mysqli_query($bd, "select complaintNumber from tblcomplaints  order by complaintNumber desc limit 1");
+$sql=mysqli_query($bd, "select id from tblcomplaints  order by id desc limit 1");
 while($row=mysqli_fetch_array($sql))
 {
- $cmpn=$row['complaintNumber'];
+ $cmpn=$row['id'];
 }
 $complainno=$cmpn;
 echo '<script> alert("Your complain has been successfully filled and your complaintno is  "+"'.$complainno.'")</script>';
+
+
 }
 ?>
 
@@ -82,6 +89,7 @@ echo '<script> alert("Your complain has been successfully filled and your compla
                 <br> <br>
                 <h3><i class="fa fa-angle-right"></i> Create Complaint</h3>
 
+
                 <!-- BASIC FORM ELELEMNTS -->
                 <div class="row mt">
                     <div class="col-lg-12">
@@ -108,6 +116,20 @@ echo '<script> alert("Your complain has been successfully filled and your compla
 
                             <form class="form-horizontal style-form" method="post" name="complaint"
                                 enctype="multipart/form-data">
+                                <h1>This is testing</h1>
+                                <?php $query=mysqli_query($bd, "select id from users where id='".$_SESSION['id']."'");
+ while($row=mysqli_fetch_array($query)) 
+ {
+    $name = htmlentities($row['id']);
+   
+   ?>
+
+                                <div class="col-sm-6">
+                                    <input type="hidden" name="user"  value="<?php echo $name; ?>">
+                                </div>
+                                <?php 
+ }
+ ?>
 
                                 <div class="form-group">
 
@@ -187,6 +209,13 @@ while ($rw=mysqli_fetch_array($sql)) {
                                     </div>
                                     <br>
 
+                                    <label class="col-sm-2 col-sm-2 control-label">Solved By </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="solved" required value="" placeholder="Solved By"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+
                                     <label class="col-sm-2 col-sm-2 control-label">Closed By </label>
                                     <div class="col-sm-6">
                                         <input type="text" name="closed" value="" placeholder="Closed By"
@@ -194,13 +223,15 @@ while ($rw=mysqli_fetch_array($sql)) {
                                     </div>
                                     <br>
 
-                                    <label class="col-sm-2 col-sm-2 control-label">Issue Details (max 2000 words)
+                                    <label class="col-sm-2 col-sm-2 control-label">Issue Details (max 2000 words) <span
+                                            style="color:red"> *
+                                        </span>
                                     </label>
                                     <div class="col-sm-6">
                                         <textarea name="detail" required="required" cols="10" rows="10"
                                             class="form-control" maxlength="2000"></textarea>
                                     </div>
-                                    <br> 
+                                    <br>
 
                                     <label class="col-sm-2 col-sm-2 control-label">Complaint Related Doc(if any)
                                     </label>

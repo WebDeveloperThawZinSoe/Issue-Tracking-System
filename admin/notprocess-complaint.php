@@ -76,20 +76,32 @@ $currentTime = date( 'd-m-Y h:i:s A', time () );
 
                                     <tbody>
                                         <?php 
-$query=mysqli_query($bd, "select tblcomplaints.*,users.fullName as name from tblcomplaints join users on users.id=tblcomplaints.userId where tblcomplaints.status is null ");
+$query=mysqli_query($bd, "select a.*  from tblcomplaints a 
+inner join 
+users u on u.id = a.ticketCreateUser
+where a.status is null; ");
 while($row=mysqli_fetch_array($query))
 {
 ?>
                                         <tr>
-                                            <td>#<?php echo htmlentities($row['complaintNumber']);?></td>
-                                            <td><?php echo htmlentities($row['name']);?></td>
-                                            <td><?php echo htmlentities($row['regDate']);?></td>
+                                            <td>#<?php echo htmlentities($row['id']);?></td>
+                                            <td><?php 
+                                            $user = htmlentities($row['ticketCreateUser']);
+                                            $sql = "SELECT fullname from users WHERE id='$user'";
+                                            $result = mysqli_query($bd,$sql);
+                                            if($result){
+                                                foreach($result as $r){
+                                                    echo $r['fullname'];
+                                                }
+                                            }
+                                            ?></td>
+                                            <td><?php echo htmlentities($row['systemDate']);?></td>
 
                                             <td><button type="button" class="btn btn-danger">Not process yet</button>
                                             </td>
 
                                             <td> <a
-                                                    href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>">
+                                                    href="complaint-details.php?cid=<?php echo htmlentities($row['id']);?>">
                                                     View Details</a>
                                             </td>
                                         </tr>
