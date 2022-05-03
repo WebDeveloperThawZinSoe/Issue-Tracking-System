@@ -80,7 +80,7 @@ echo '<script> alert("Your complain has been successfully filled and your compla
         <section id="main-content">
             <section class="wrapper">
                 <br> <br>
-                <h3><i class="fa fa-angle-right"></i> Register Complaint</h3>
+                <h3><i class="fa fa-angle-right"></i> Create Complaint</h3>
 
                 <!-- BASIC FORM ELELEMNTS -->
                 <div class="row mt">
@@ -110,7 +110,18 @@ echo '<script> alert("Your complain has been successfully filled and your compla
                                 enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Category</label>
+
+                                    <label class="col-sm-2 col-sm-2 control-label">Issue Title <span style="color:red">
+                                            * </span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="issuetitle" required="required" value=""
+                                            placeholder="Issue Title" class="form-control">
+                                    </div>
+                                    <br>
+
+
+                                    <label class="col-sm-2 col-sm-2 control-label">Category <span style="color:red"> *
+                                        </span> </label>
                                     <div class="col-sm-6">
                                         <select name="category" id="category" class="form-control"
                                             onChange="getCat(this.value);" required="">
@@ -126,31 +137,22 @@ while ($rw=mysqli_fetch_array($sql)) {
                                         </select>
                                     </div>
                                     <br>
-                                    <label class="col-sm-2 col-sm-2 control-label">Sub Category </label>
+
+                                    <label class="col-sm-2 col-sm-2 control-label">Priority <span style="color:red"> *
+                                        </span> </label>
                                     <div class="col-sm-6">
-                                        <select name="subcategory" id="subcategory" class="form-control">
-                                            <option value="">Select Subcategory</option>
+                                        <select name="priority" class="form-control" required="">
+                                            <option value=" Urgent"> Urgent</option>
+                                            <option value="Important">Important</option>
+                                            <option value="UgentImportant">Urgent Important</option>
                                         </select>
                                     </div>
-                                </div>
-
-
-
-
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Complaint Type</label>
-                                    <div class="col-sm-6">
-                                        <select name="complaintype" class="form-control" required="">
-                                            <option value=" Complaint"> Complaint</option>
-                                            <option value="General Query">General Query</option>
-                                        </select>
-                                    </div>
-
                                     <br>
 
-                                    <label class="col-sm-2 col-sm-2 control-label">State</label>
+                                    <label class="col-sm-2 col-sm-2 control-label">Location <span style="color:red"> *
+                                        </span></label>
                                     <div class="col-sm-6">
-                                        <select name="state" required="required" class="form-control">
+                                        <select name="location" required="required" class="form-control">
                                             <option value="">Select State</option>
                                             <?php $sql=mysqli_query($bd, "select stateName from state ");
 while ($rw=mysqli_fetch_array($sql)) {
@@ -163,38 +165,59 @@ while ($rw=mysqli_fetch_array($sql)) {
 
                                         </select>
                                     </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Nature of Complaint</label>
+                                    <br>
+                                    <label class="col-sm-2 col-sm-2 control-label">Open By </label>
                                     <div class="col-sm-6">
-                                        <input type="text" name="noc" required="required" value="" required=""
+                                        <input type="text" name="openBy" value="" placeholder="Open By"
                                             class="form-control">
                                     </div>
+                                    <br>
 
-                                </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Assigned To </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="assignTo" value="" placeholder="Assigned To"
+                                            class="form-control">
+                                    </div>
+                                    <br>
 
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Complaint Details (max 2000 words)
+                                    <label class="col-sm-2 col-sm-2 control-label">Checked By </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="checked" value="" placeholder="Checked By"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+
+                                    <label class="col-sm-2 col-sm-2 control-label">Closed By </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="closed" value="" placeholder="Closed By"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+
+                                    <label class="col-sm-2 col-sm-2 control-label">Issue Details (max 2000 words)
                                     </label>
                                     <div class="col-sm-6">
-                                        <textarea name="complaindetails" required="required" cols="10" rows="10"
+                                        <textarea name="detail" required="required" cols="10" rows="10"
                                             class="form-control" maxlength="2000"></textarea>
                                     </div>
-                                </div>
-                                <div class="form-group">
+                                    <br> 
+
                                     <label class="col-sm-2 col-sm-2 control-label">Complaint Related Doc(if any)
                                     </label>
                                     <div class="col-sm-6">
                                         <input type="file" name="compfile" class="form-control" value="">
                                     </div>
+                                    <br>
+                                    <!-- <label class="col-sm-2 col-sm-2 control-label">Sub Category </label>
+                                    <div class="col-sm-6">
+                                        <select name="subcategory" id="subcategory" class="form-control">
+                                            <option value="">Select Subcategory</option>
+                                        </select>
+                                    </div> -->
                                 </div>
 
-
-
                                 <div class="form-group">
-                                    <div class="col-sm-10" >
+                                    <div class="col-sm-10">
                                         <button type="submit" name="submit" class="btn btn-primary">Create</button>
                                     </div>
                                 </div>
